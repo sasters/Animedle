@@ -1,2 +1,2 @@
 # Animedle
-world like game on animes
+wordle like game on animes
