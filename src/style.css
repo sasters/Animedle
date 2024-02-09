@@ -23,17 +23,23 @@ html, body {
 }
 
 .box {
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
     margin: 4px;
     border: 2px solid var(--empty);
     color: white;
     text-transform: uppercase;
-    display: grid;
-    place-items: center;
+    display: flex; /* Utilisation de flexbox pour aligner le contenu */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 2.4rem;
+    font-size: 16px;
 }
+
+.box span {
+    text-align: center; /* Centrer le texte à l'intérieur du span */
+}
+
 
 .box.wrong {
     background: var(--wrong);
@@ -45,4 +51,8 @@ html, body {
 
 .box.correct {
     background: var(--correct);
+}
+
+.box.texte{
+    min-width: 1px;
 }
