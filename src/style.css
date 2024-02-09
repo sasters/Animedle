@@ -40,7 +40,6 @@ html, body {
     text-align: center; /* Centrer le texte à l'intérieur du span */
 }
 
-
 .box.wrong {
     background: var(--wrong);
 }
@@ -53,6 +52,86 @@ html, body {
     background: var(--correct);
 }
 
-.box.texte{
-    min-width: 1px;
+.hidden {
+    visibility: hidden; /* Pour cacher la case */
+
+    padding: 0; /* Aucun remplissage */
+    border: none; /* Aucune bordure */
+    background: transparent; /* Fond transparent */
+    pointer-events: none; /* Ignorer les événements de pointage (par exemple, clics) */
+
+    width: 120px;
+    height: 120px;
+    margin: 4px;
+    border: 2px solid var(--empty);
+    text-transform: uppercase;
+    display: flex; /* Utilisation de flexbox pour aligner le contenu */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.hidden span {
+    visibility: visible; /* Rendre le texte visible */
+    text-decoration: underline;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#guess-input {
+    padding: 15px; /* Ajustez le rembourrage pour correspondre à celui de la barre de recherche */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    flex: 1;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#submit-guess {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px; /* Ajustez le rembourrage pour correspondre à celui du bouton de soumission */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+#submit-guess:hover {
+    background-color: #45a049;
+}
+
+.suggestions-list {
+    max-height: 200px; /* Limitez la hauteur de la liste des suggestions pour la faire défiler si elle est trop longue */
+    overflow-y: auto; /* Ajoutez un défilement vertical si nécessaire */
+    border: 2px solid #ccc; /* Ajoutez une bordure */
+    border-radius: 5px; /* Ajoutez un arrondi aux coins */
+    padding: 5px; /* Ajoutez un espace intérieur */
+    background-color: #fff; /* Ajoutez une couleur de fond */
+    width: 500px;
+    margin-right: 10px; /* Ajustez la marge droite pour correspondre à celle du bouton de soumission */
+    position: absolute;
+    z-index: 1;
+}
+
+.suggestions-list div {
+    padding: 8px;
+    cursor: pointer; /* Changez le curseur au survol */
+}
+
+.suggestions-list div:hover {
+    background-color: #f0f0f0; /* Changez la couleur de fond au survol */
+}
+
+/* Ajuster la taille des images à côté des noms des personnages */
+.suggestions-list img {
+    width: 40px; /* Ajustez la largeur de l'image selon vos besoins */
+    height: 40px; /* Ajustez la hauteur de l'image selon vos besoins */
+    margin-right: 10px; /* Ajouter une marge à droite pour séparer l'image du texte */
 }
