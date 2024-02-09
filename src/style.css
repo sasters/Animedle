@@ -116,8 +116,9 @@ html, body {
     background-color: #fff; /* Ajoutez une couleur de fond */
     width: 500px;
     margin-right: 10px; /* Ajustez la marge droite pour correspondre à celle du bouton de soumission */
-    position: absolute;
+    position: fixed;
     z-index: 1;
+    display: none;
 }
 
 .suggestions-list div {

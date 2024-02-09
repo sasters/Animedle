@@ -4,13 +4,16 @@ var characters = [
     
 ]
 
+var real = characters[Math.floor(Math.random() * characters.length)];
+console.log(real);
+
 function HandleGuess(guess) {
     console.log(guess);
 
     document.getElementById('suggestions-list').style.display = 'none';
     document.getElementById('guess-input').value = '';
 
-    Add(guess);
+    AddRow(guess);
 }
 
 function FilterCharacters(text) {
@@ -82,7 +85,12 @@ function HandleInputEvent(event) {
         var charFiltered = FilterCharacters(guess);
         ShowSuggestions(charFiltered);
 
-        sugg.style.display = 'block';
+        console.log(document.querySelectorAll('.suggestions-list div').length);
+
+        if(document.querySelectorAll('.suggestions-list div').length <= 0) { sugg.style.display = 'none'; }
+        else {sugg.style.display = 'block';}
+
+        
     }
 }
 
@@ -120,28 +128,36 @@ document.getElementById('submit-guess').addEventListener('click', function() {
 });
 
 
-
-
-
-
-
-
-
 // Gestionnaire d'événements pour le clic sur le bouton de soumission
-function Add(guess) {
+function AddRow(guess) {
     var grid = document.querySelector('.grid');
     var char = GetCharacterInfo(guess)
 
     if (guess !== '') {
 
         for (let i = 0; i < 8; i++) {
-            console.log(char[i]);
             var newCase = document.createElement('div');
             newCase.classList.add('box');
-            newCase.classList.add('span');
-            newCase.textContent = char[i];
+
+            var newSpan = document.createElement('span');
+            newSpan.textContent = char[i];
+
+            newCase.appendChild(newSpan)
             grid.appendChild(newCase);
         }
 
+        var index = -1
+        for (var i = 0; i < characters.length; i++) {
+            if (characters[i].alias.includes(guess)) {
+                index = i;
+                break;
+            }
+        }
+
+        if(index !== -1) {
+            characters.splice(index, 1)
+        }
     } 
 }
+
+
