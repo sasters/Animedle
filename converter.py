@@ -2,7 +2,7 @@ import csv
 import json
 
 # Chemin vers le fichier CSV
-csv_file = '/home/marco/Documents/marco/dev/Animdle/Animedle/mini-OPdle.csv'
+csv_file = 'PATH.csv'
 
 # Liste pour stocker les personnages
 characters = []

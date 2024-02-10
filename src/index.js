@@ -73,7 +73,7 @@ function ShowSuggestions(suggestions) {
     suggestions.forEach(function(character) {
         var elementSuggestion = document.createElement('div');
         var imagePersonnage = document.createElement('img'); // Créez un élément img pour l'image du personnage
-        imagePersonnage.src = '/home/marco/Documents/marco/dev/Animdle/Animedle/img/luffy.png'; // Remplacez par le chemin correct vers l'image du personnage
+        imagePersonnage.src = 'path/luffy.png'; // Remplacez par le chemin correct vers l'image du personnage
         imagePersonnage.alt = character; // Utilisez le nom du personnage comme texte alternatif de l'image
         elementSuggestion.appendChild(imagePersonnage); // Ajoutez l'image à l'élément de suggestion
         elementSuggestion.textContent = character; // Ajoutez le nom du personnage à l'élément de suggestion
