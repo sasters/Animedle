@@ -1,6 +1,6 @@
 var characters = [
-    { nom: "Luffy", alias:['Luffy', 'Monkey D. Luffy', 'Mugiwara', 'Luffytaro'], genre: "Homme", espece: "Humain", haki:'Roi, Observation, Armement', arc: "Romance Down", fruit: "Zoan", appartenance: 'Pirate', grade: 'Capitaine', imgpath:''},
-    { nom: "Zoro", alias:['Zoro', 'Roronoa Zoro'], genre: "Homme", espece: "Humain", arc: "Romance Down", haki:"Roi, Observation, Armement", fruit: "Aucun", appartenance:"Pirate", grade:'Second', imgpath:'' },
+    { nom: "Luffy", alias:['Luffy', 'Monkey D. Luffy', 'Mugiwara', 'Luffytaro'], genre: "Homme", espece: ["Humain"], haki:['Roi', 'Observation', 'Armement'],fruit: "Zoan", arc: "Romance Down", appartenance: ['Pirate'], grade: ['Capitaine'], imgpath:''},
+    { nom: "Zoro", alias:['Zoro', 'Roronoa Zoro'], genre: "Homme", espece: ["Humain"], haki:["Roi", "Observation", "Armement"], fruit: "Aucun", arc: "Romance Down", appartenance:["Pirate"], grade:['Second'], imgpath:'' },
     
 ]
 
@@ -8,8 +8,6 @@ var real = characters[Math.floor(Math.random() * characters.length)];
 console.log(real);
 
 function HandleGuess(guess) {
-    console.log(guess);
-
     document.getElementById('suggestions-list').style.display = 'none';
     document.getElementById('guess-input').value = '';
 
@@ -56,6 +54,18 @@ function GetCharacterInfo(char) {
     return null;
 }
 
+function GetCharacter(name) {
+    var index = 0;
+    for (let i = 0; i < characters.length; i++) {
+        if(characters[i].alias.includes(name)) {
+            break;
+        }
+        index++;
+    }
+
+    return characters[index];
+}
+
 function ShowSuggestions(suggestions) {
     var sugg = document.querySelector('.suggestions-list');
     sugg.innerHTML = ''; // supprime ancien sugg
@@ -84,8 +94,6 @@ function HandleInputEvent(event) {
     } else {
         var charFiltered = FilterCharacters(guess);
         ShowSuggestions(charFiltered);
-
-        console.log(document.querySelectorAll('.suggestions-list div').length);
 
         if(document.querySelectorAll('.suggestions-list div').length <= 0) { sugg.style.display = 'none'; }
         else {sugg.style.display = 'block';}
@@ -132,32 +140,72 @@ document.getElementById('submit-guess').addEventListener('click', function() {
 function AddRow(guess) {
     var grid = document.querySelector('.grid');
     var char = GetCharacterInfo(guess)
+    var charInfo = GetCharacter(guess)
+
+    var corr = GetCorrection(charInfo)
 
     if (guess !== '') {
 
         for (let i = 0; i < 8; i++) {
             var newCase = document.createElement('div');
-            newCase.classList.add('box');
+            newCase.classList.add("box");
 
             var newSpan = document.createElement('span');
-            newSpan.textContent = char[i];
+
+            if (Array.isArray(char[i])) { newSpan.textContent = char[i].join(' '); } 
+            else { newSpan.textContent = char[i]; }
+
+            if(i!==0) newCase.classList.add(corr[i-1]);
 
             newCase.appendChild(newSpan)
             grid.appendChild(newCase);
         }
 
-        var index = -1
-        for (var i = 0; i < characters.length; i++) {
-            if (characters[i].alias.includes(guess)) {
-                index = i;
-                break;
-            }
-        }
 
-        if(index !== -1) {
-            characters.splice(index, 1)
+        var index = characters.findIndex(function(personnage) {
+            return personnage.alias.includes(guess);
+        });
+        if (index !== -1) {
+            characters.splice(index, 1);
         }
     } 
 }
 
+function GetCorrection(char) {
+    var corr = []
+    index = 0;
+    
+    for(var cate in real) {
+        if(cate !== 'nom' && cate !== 'alias' && cate !== 'imgpath') {
 
+            if(Array.isArray(real[cate])) {
+
+                if (arraysEqual(char[cate], real[cate])) {
+                    corr[index] = 'correct';
+                } else if (char[cate].some(val => real[cate].includes(val))) {
+                    corr[index] = 'semi';
+                } else {
+                    corr[index] = 'wrong';
+                }
+
+            } else {
+                if(real[cate] == char[cate]) { corr[index] = 'correct'; }
+                else { corr[index] = 'wrong'; }
+            }
+
+            index++;
+
+        }
+        
+    }
+
+    return corr
+}
+
+function arraysEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+    for (var i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+}
