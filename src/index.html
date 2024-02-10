@@ -9,34 +9,51 @@
 </head>
 <body>
 
-    <h1>OPDLE</h1>
-
-    <div class="search-bar">
-        <input type="text" id="guess-input" placeholder="Entrez votre proposition...">
-        <button id="submit-guess">Soumettre</button>
-    </div>
-
-    <div id="game">
-
-        
+    <header>
+        <button class="buttons">⚙️</button>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <button class="buttons">🌍</button>
+    </header>
     
-        <div id="suggestions-list" class="suggestions-list">
-            <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
-        </div>
 
-        <div class="grid">
-            <div class="box hidden"><span>Image</span></div>
-            <div class="box hidden"><span>Genre</span></div>
-            <div class="box hidden"><span>Espèce</span></div>
-            <div class="box hidden"><span>Haki</span></div>
-            <div class="box hidden"><span>Type de fruit</span></div>
-            <div class="box hidden"><span>Arc d'apparition</span></div>
-            <div class="box hidden"><span>Appartenance</span></div>
-            <div class="box hidden"><span>Grade / Métier</span></div>
-        
-           
+    <br><br><br>
+
+    <main>
+        <div class="search-bar">
+            <input type="text" id="guess-input" placeholder="Entrez votre proposition...">
+            <button id="submit-guess">Soumettre</button>
         </div>
-    </div>
+    
+        <div id="game">
+    
+            
+        
+            <div id="suggestions-list" class="suggestions-list">
+                <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
+            </div>
+    
+            <div class="grid">
+                <div class="box hidden"><span>Image</span></div>
+                <div class="box hidden"><span>Genre</span></div>
+                <div class="box hidden"><span>Espèce</span></div>
+                <div class="box hidden"><span>Haki</span></div>
+                <div class="box hidden"><span>Type de fruit</span></div>
+                <div class="box hidden"><span>Arc d'apparition</span></div>
+                <div class="box hidden"><span>Appartenance</span></div>
+                <div class="box hidden"><span>Grade / Métier</span></div>
+            
+               
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+   
 
     <script src="char.js" type="module"></script>
     <script type="module" src="index.js"></script>

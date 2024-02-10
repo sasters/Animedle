@@ -182,7 +182,7 @@ function AddRow(guess) {
 
         setTimeout(() => {
             if(isAllCorrect) { alert(`Vous avez trouvé: ${real.nom} en ${attemps} tentative(s) !`) }
-            if(attemps === 7) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
+            else if(attemps === 7) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
         }, 5*anim_time);  
     } 
 }
