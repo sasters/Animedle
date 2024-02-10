@@ -1,15 +1,14 @@
-var characters = [
-    { nom: "Luffy", alias:['Luffy', 'Monkey D. Luffy', 'Mugiwara', 'Luffytaro'], genre: "Homme", espece: ["Humain"], haki:['Roi', 'Observation', 'Armement'],fruit: "Zoan", arc: "Romance Down", appartenance: ['Pirate'], grade: ['Capitaine'], imgpath:''},
-    { nom: "Zoro", alias:['Zoro', 'Roronoa Zoro'], genre: "Homme", espece: ["Humain"], haki:["Roi", "Observation", "Armement"], fruit: "Aucun", arc: "Romance Down", appartenance:["Pirate"], grade:['Second'], imgpath:'' },
-    
-]
+import { characters } from './char.js';
 
 var real = characters[Math.floor(Math.random() * characters.length)];
-console.log(real);
+var attemps = 0;
+console.log("----->",real.nom);
 
 function HandleGuess(guess) {
     document.getElementById('suggestions-list').style.display = 'none';
     document.getElementById('guess-input').value = '';
+
+    attemps++;
 
     AddRow(guess);
 }
@@ -141,7 +140,6 @@ function AddRow(guess) {
     var grid = document.querySelector('.grid');
     var char = GetCharacterInfo(guess)
     var charInfo = GetCharacter(guess)
-
     var corr = GetCorrection(charInfo)
 
     if (guess !== '') {
@@ -168,12 +166,16 @@ function AddRow(guess) {
         if (index !== -1) {
             characters.splice(index, 1);
         }
+
+        var isAllCorrect = corr.every(element => element === "correct");
+        if(isAllCorrect) { alert(`Vous avez trouvé: ${real.nom} en ${attemps} tentative(s) !`) }
+        if(attemps === 7) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
     } 
 }
 
 function GetCorrection(char) {
     var corr = []
-    index = 0;
+    var index = 0;
     
     for(var cate in real) {
         if(cate !== 'nom' && cate !== 'alias' && cate !== 'imgpath') {
