@@ -141,22 +141,33 @@ function AddRow(guess) {
     var char = GetCharacterInfo(guess)
     var charInfo = GetCharacter(guess)
     var corr = GetCorrection(charInfo)
+    const anim_time = 500; // ms
 
     if (guess !== '') {
 
         for (let i = 0; i < 8; i++) {
-            var newCase = document.createElement('div');
-            newCase.classList.add("box");
 
-            var newSpan = document.createElement('span');
+            setTimeout(() => {
+                var newCase = document.createElement('div');
+                newCase.classList.add("box");
 
-            if (Array.isArray(char[i])) { newSpan.textContent = char[i].join(' '); } 
-            else { newSpan.textContent = char[i]; }
+                var newSpan = document.createElement('span');
+                
+                if (Array.isArray(char[i])) { newSpan.textContent = char[i].join(' '); } 
+                else { newSpan.textContent = char[i]; }
 
-            if(i!==0) newCase.classList.add(corr[i-1]);
+                if(i!==0) newCase.classList.add(corr[i-1]);
+                
+                newCase.appendChild(newSpan)
+                grid.appendChild(newCase);
 
-            newCase.appendChild(newSpan)
-            grid.appendChild(newCase);
+                setTimeout(() => {
+                    newCase.classList.add('appear');
+                }, 50);
+
+            }, ((i+1)*anim_time) / 2);
+
+
         }
 
 
@@ -168,8 +179,11 @@ function AddRow(guess) {
         }
 
         var isAllCorrect = corr.every(element => element === "correct");
-        if(isAllCorrect) { alert(`Vous avez trouvé: ${real.nom} en ${attemps} tentative(s) !`) }
-        if(attemps === 7) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
+
+        setTimeout(() => {
+            if(isAllCorrect) { alert(`Vous avez trouvé: ${real.nom} en ${attemps} tentative(s) !`) }
+            if(attemps === 7) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
+        }, 5*anim_time);  
     } 
 }
 
