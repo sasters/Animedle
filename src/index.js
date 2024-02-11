@@ -2,7 +2,9 @@ import { characters } from './char.js';
 
 var real = characters[Math.floor(Math.random() * characters.length)];
 var attemps = 0;
+var arcOrder = ['Romance Dawn', "Ville d'Orange", "Village de Sirop", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain","Whiskey Peak","Little Garden", "Royaume de drum", "Alabasta", "Jaya","Skypia","Long Ring Long Land", "Water 7", "Enies Lobby","Thriller Bark","Sabaody","Amazon Lily","Impel Down","Marineford","Ile des Hommes-Poissons","Punk Hazard","Dressrosa","Zoo","Whole Cake Island","Pays de Wa","Egg Head"]
 console.log("----->",real.nom);
+console.log(arcOrder.length);
 
 function HandleGuess(guess) {
     document.getElementById('suggestions-list').style.display = 'none';
@@ -205,14 +207,22 @@ function GetCorrection(char) {
                 }
 
             } else {
-                if(real[cate] == char[cate]) { corr[index] = 'correct'; }
-                else { corr[index] = 'wrong'; }
+                if(cate === 'arc') {
+                    if (char[cate] === real[cate]) {
+                        corr[index] = 'correct';
+                    } else if (arcOrder.indexOf(char[cate]) < arcOrder.indexOf(real[cate])) {
+                        corr[index] = 'higher';
+                    } else {
+                        corr[index] = 'lower';
+                    }
+                } else {
+                    if(real[cate] == char[cate]) { corr[index] = 'correct'; }
+                    else { corr[index] = 'wrong'; }
+                }
             }
 
             index++;
-
         }
-        
     }
 
     return corr
