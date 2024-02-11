@@ -4,7 +4,6 @@ var real = characters[Math.floor(Math.random() * characters.length)];
 var attemps = 0;
 var arcOrder = ['Romance Dawn', "Ville d'Orange", "Village de Sirop", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain","Whiskey Peak","Little Garden", "Royaume de drum", "Alabasta", "Jaya","Skypia","Long Ring Long Land", "Water 7", "Enies Lobby","Thriller Bark","Sabaody","Amazon Lily","Impel Down","Marineford","Ile des Hommes-Poissons","Punk Hazard","Dressrosa","Zoo","Whole Cake Island","Pays de Wa","Egg Head"]
 console.log("----->",real.nom);
-console.log(arcOrder.length);
 
 function HandleGuess(guess) {
     document.getElementById('suggestions-list').style.display = 'none';
@@ -73,13 +72,25 @@ function ShowSuggestions(suggestions) {
 
     // Affichez les nouvelles suggestions
     suggestions.forEach(function(character) {
-        var elementSuggestion = document.createElement('div');
-        var imagePersonnage = document.createElement('img'); // Créez un élément img pour l'image du personnage
-        imagePersonnage.src = 'path/luffy.png'; // Remplacez par le chemin correct vers l'image du personnage
-        imagePersonnage.alt = character; // Utilisez le nom du personnage comme texte alternatif de l'image
-        elementSuggestion.appendChild(imagePersonnage); // Ajoutez l'image à l'élément de suggestion
-        elementSuggestion.textContent = character; // Ajoutez le nom du personnage à l'élément de suggestion
-        sugg.appendChild(elementSuggestion); // Ajoutez l'élément de suggestion à la liste de suggestions
+        var charInfo = GetCharacter(character)
+
+        var newSugg = document.createElement('div');
+        var charImg = document.createElement('img'); 
+        var newSpan = document.createElement("span");
+
+        charImg.classList.add("sugg-img")
+
+        console.log(character, charInfo);
+
+        charImg.src = charInfo.imgpath  
+        charImg.alt = character; 
+        
+        newSpan.textContent = character;
+
+        newSugg.appendChild(charImg); 
+        newSugg.appendChild(newSpan);
+
+        sugg.appendChild(newSugg); 
     });
 
     sugg.style.display = 'block'; // Afficher la liste de suggestions
@@ -97,9 +108,7 @@ function HandleInputEvent(event) {
         ShowSuggestions(charFiltered);
 
         if(document.querySelectorAll('.suggestions-list div').length <= 0) { sugg.style.display = 'none'; }
-        else {sugg.style.display = 'block';}
-
-        
+        else { sugg.style.display = 'block'; }   
     }
 }
 
@@ -150,18 +159,34 @@ function AddRow(guess) {
         for (let i = 0; i < 8; i++) {
 
             setTimeout(() => {
-                var newCase = document.createElement('div');
-                newCase.classList.add("box");
+                if(i === 0) {
+                    var newCase = document.createElement('div');
+                    newCase.classList.add("box");
 
-                var newSpan = document.createElement('span');
-                
-                if (Array.isArray(char[i])) { newSpan.textContent = char[i].join(' '); } 
-                else { newSpan.textContent = char[i]; }
+                    var img = document.createElement('img');
+                    img.classList.add("image")
+                    img.alt = guess;
+                    img.src = char[0];
 
-                if(i!==0) newCase.classList.add(corr[i-1]);
+                    newCase.appendChild(img)
+                    grid.appendChild(newCase);
+                } else {
+                    var newCase = document.createElement('div');
+                    newCase.classList.add("box");
+
+                    var newSpan = document.createElement('span');
+                    
+                    if (Array.isArray(char[i])) { newSpan.textContent = char[i].join(' '); } 
+                    else { newSpan.textContent = char[i]; }
+
+                    newCase.classList.add(corr[i-1]);
+
+                    newCase.appendChild(newSpan)
+                    grid.appendChild(newCase);
+                }
                 
-                newCase.appendChild(newSpan)
-                grid.appendChild(newCase);
+                
+                
 
                 setTimeout(() => {
                     newCase.classList.add('appear');

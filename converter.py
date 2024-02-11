@@ -11,6 +11,10 @@ characters = []
 with open(csv_file, newline='', encoding='utf-8') as file:
     reader = csv.DictReader(file)
     for row in reader:
+        if row['Nom'] not in row['Alias']:
+            print(f"Erreur: check les alias de '{row['Nom']}'")
+            continue
+
         # Créer un dictionnaire pour chaque personnage
         character = {
             'nom': row['Nom'],
@@ -21,7 +25,8 @@ with open(csv_file, newline='', encoding='utf-8') as file:
             'fruit': row['Type de fruit du démon'],
             'arc': row['Arc d\'apparition'],
             'appartenance': row['Appartenance'],
-            'grade': row['Grade / Métier']
+            'grade': row['Grade / Métier'],
+            'imgpath': row['imgpath']
         }
         characters.append(character)
 

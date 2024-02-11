@@ -148,10 +148,10 @@ html, body {
 }
 
 /* Ajuster la taille des images à côté des noms des personnages */
-.suggestions-list img {
+.sugg-img {
     width: 40px; /* Ajustez la largeur de l'image selon vos besoins */
-    height: 40px; /* Ajustez la hauteur de l'image selon vos besoins */
-    margin-right: 10px; /* Ajouter une marge à droite pour séparer l'image du texte */
+    height: auto; /* Ajustez la hauteur de l'image selon vos besoins */
+    margin-right: 120px; /* Ajouter une marge à droite pour séparer l'image du texte */
 }
 
 
@@ -186,4 +186,9 @@ header {
 .box.higher {
     background: var(--wrong);
     clip-path: polygon(97% 40%, 85% 40%, 85% 95%, 15% 95%, 15% 40%, 3% 40%, 50% 5%);
+}
+
+.image {
+    width: 120px; /* Ajustez la largeur de l'image selon vos besoins - Meme que box */
+    height: auto;
 }
