@@ -18,4 +18,14 @@ node server.js
 
 # Converter
 
-Converter.py est un script qui permet de convertir un fichier csv en fichier json au bon format. Il suffit ensuite de copier/coller le contenu du fichier json dans le fichier 'src/char.js'
+Converter.py est un script qui permet de convertir un fichier csv en fichier js. Il faut ensuite le modifer pour pouvoir l'utiliser (Voir en dessous). 
+
+## Initaliser les fichiers
+Utiliser le converter pour généré le fichier char.js, lorsqu'il est généré, il faut le modifier en ajoutant:
+```js
+export const characters = [
+    // code generated
+]
+```
+
+Penser aussi a supprimer le 1er éléments.

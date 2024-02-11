@@ -2,7 +2,7 @@ import csv
 import json
 
 # Chemin vers le fichier CSV
-csv_file = 'PATH.csv'
+csv_file = 'OPdle.csv'
 
 # Liste pour stocker les personnages
 characters = []
@@ -25,13 +25,11 @@ with open(csv_file, newline='', encoding='utf-8') as file:
         }
         characters.append(character)
 
-# Écrire les personnages dans un fichier JSON
-with open('characters.json', 'w') as json_file:
-    json.dump(characters, json_file, indent=4)
+
 
 # Générer le code JavaScript
 js_code = "var characters = " + json.dumps(characters, indent=4) + ";"
 
 # Écrire le code JavaScript dans un fichier
-with open('characters.js', 'w') as js_file:
+with open('./src/char.js', 'w') as js_file:
     js_file.write(js_code)
