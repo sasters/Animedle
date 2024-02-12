@@ -17,23 +17,23 @@ with open(csv_file, newline='', encoding='utf-8') as file:
 
         # Créer un dictionnaire pour chaque personnage
         character = {
-            'nom': row['Nom'],
+            'nom': row['Nom'].strip(),
             'alias': row['Alias'].split(', '),
-            'genre': row['Genre'],
-            'espece': row['Espece'],
+            'genre': row['Genre'].strip(),
+            'espece': row['Espece'].strip(),
             'haki': row['Type d\'haki'].split(', '),
-            'fruit': row['Type de fruit du démon'],
-            'arc': row['Arc d\'apparition'],
-            'appartenance': row['Appartenance'],
-            'grade': row['Grade / Métier'],
-            'imgpath': row['imgpath']
+            'fruit': row['Type de fruit du démon'].strip(),
+            'arc': row['Arc d\'apparition'].strip(),
+            'appartenance': row['Appartenance'].strip(),
+            'grade': row['Grade / Métier'].strip(),
+            'imgpath': row['imgpath'].strip()
         }
         characters.append(character)
 
 
 
 # Générer le code JavaScript
-js_code = "var characters = " + json.dumps(characters, indent=4) + ";"
+js_code = "export const characters = " + json.dumps(characters, indent=4) + ";"
 
 # Écrire le code JavaScript dans un fichier
 with open('./src/char.js', 'w') as js_file:

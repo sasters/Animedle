@@ -298,7 +298,38 @@ window.addEventListener('click', (event) => {
 function adjustSuggestionsPosition() {
     const distanceFromTop = window.scrollY;
     document.getElementById("suggestions-list").style.top = `calc(30% - ${distanceFromTop}px)`;
+    document.getElementById("hint-popup").style.top = `calc(35% - ${distanceFromTop}px)`;
 }
 
 // Écoutez l'événement de défilement de la page et ajustez la position de la barre de suggestions
 window.addEventListener('scroll', adjustSuggestionsPosition);
+
+// Sélection du bouton et de la popup
+const hintButton = document.getElementById('hint-button');
+const hintPopup = document.getElementById('hint-popup');
+const hintText = document.getElementById('hint-text')
+
+// Fonction pour afficher la popup
+function showPopup() {
+    //if(attemps < 7) return;
+    hintPopup.style.display = 'block';
+    hintText.textContent = `Petit indice, la première lettre est : ${real.nom[0]}...`;
+}
+
+// Fonction pour masquer la popup
+function hidePopup() {
+    hintPopup.style.display = 'none';
+}
+
+// Ajout d'un écouteur d'événement au bouton pour afficher la popup
+hintButton.addEventListener('click', showPopup);
+
+// Ajout d'un écouteur d'événement au bouton de fermeture pour masquer la popup
+document.getElementById('close-icon').addEventListener('click', hidePopup);
+
+// Ajouter un gestionnaire d'événements pour le clic en dehors de la popup pour fermer la popup
+window.addEventListener('click', function(event) {
+    if (event.target === popup) {
+        hintPopup.style.display = 'none';
+    }
+});
