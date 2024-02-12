@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <button class="buttons">⚙️</button>
+        <button class="buttons" id="settings">⚙️</button>
         <div class="logo-container">
             <img src="img/logo.png" alt="Logo">
         </div>
@@ -21,19 +21,67 @@
     <br><br><br>
 
     <main>
-        <div class="search-bar">
-            <input type="text" id="guess-input" placeholder="Entrez votre proposition...">
-            <button id="submit-guess">Soumettre</button>
+        <div id="settings-popup" class="popup">
+            <div class="popup-content">
+                <!-- Vos cases et autres éléments vont ici -->
+                
+                <div class="section">
+                    <h2>Comment jouer ?</h2>
+                    <span>Devine le personnage du jour de "One Piece". Il change tout les 24h.</span><br>
+                    <span>Il suffit de tapper le nom d'un personnage pour révéler ses propriétés.</span><br>
+                    <span>A savoir:</span>
+                    <span>Soumettre avec un seul personnage proposé, soumet le personnage proposé. S'il y en a plusieurs proposé, la soumission n'est pas prise en compte, à moins de spécifier le nom complet ou de cliquer sur le personnage proposé.</span>
+                    <span>Cependant, appuyer sur 'Entrez', soumet le 1er élément proposé.</span> <br><br>
+                    <span class="green">Vert</span> <span>indique que la propriété correspond.</span><br>
+                    <span class="orange">orange</span> <span>indique que la propriété correspond partiellement.</span><br>
+                    <span class="red">Rouge</span> <span>indique que la propriété ne correspond pas du tout.</span><br>
+                    <span>⬆️⬇️</span><span>Les flèches indiquent si la propriété de la réponse est supérieur ou inférieur à l'essai.</span>
+                </div>
+                <hr>
+                <div class="section">
+                    <h2>Propriétés</h2>
+                    <span>Voici le détail des propriétés:</span><br>
+                    <span class="prop">Genre</span>:<br> 
+                    <span class="light-green">Valeurs possibles:</span> Homme, Femme ou Autre. <br><br>
+                    <span class="prop">Espèce</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Humain, Homme-Poisson, Sirène, Géant, Cyborg, Klabautermann, Okama, Skypién, Shandia, Zombie, Long Bras, Mink, Tontatta, Homie, Lunarias et Autre. <br> <br>
+                    <span class="prop">Haki</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Roi, Observation, Armement ou Aucun <br> <br>
+                    <span class="prop">Type de fruit</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Zoan, Logia, Paramecia ou Aucun <br><br>
+                    <span class="prop">Arc d'apparition</span>: <br> 
+                    <span>Les flèches apparissent pour cette case pour indiquer si c'est un arc avant (⬇️) ou un arc après (⬆️).</span>
+                    <span class="light-green">Valeurs possibles:</span> Romance Dawn, Ville d'Orange, Village de Sirop, Baratie, Arlong Park, Loguetown, Reverse Mountain, Whiskey Peak, Little Garden, Royaume de drum, Alabasta, Jaya, Skypia, Long Ring Long Land, Water 7, Enies Lobby, Thriller Bark, Sabaody, Amazon Lily, Impel Down, Marineford, Ile des Hommes-Poissons, Punk Hazard, Dressrosa, Zoo, Whole Cake Island, Pays de Wa et Egg Head <br>
+                    <span class="prop">Appartenance</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Pirate, Marine, Révolutionnaire ou Autre <br>
+                    <span class="prop">Grade / Métier</span>: <br>
+                    <spa class="light-green">Valeurs possibles:</span> 
+
+                </div>
+                <hr>
+                <div class="section">
+
+                </div>
+
+            </div>
+            <span id="close-popup" class="close-button">&times;</span>
         </div>
-    
-        <div id="game">
-    
-            
         
+        
+              
+
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="guess-input" placeholder="Entrez votre proposition...">
+                <button id="submit-guess">Soumettre</button>
+            </div>
+
             <div id="suggestions-list" class="suggestions-list">
                 <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
             </div>
+        </div>
     
+        <div id="game">
             <div class="grid">
                 <div class="box hidden"><span>Image</span></div>
                 <div class="box hidden"><span>Genre</span></div>
@@ -50,7 +98,7 @@
     </main>
 
     <footer>
-
+        <h4>Hier: Luffy</h4>
     </footer>
 
    

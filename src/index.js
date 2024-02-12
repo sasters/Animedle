@@ -6,6 +6,8 @@ var arcOrder = ['Romance Dawn', "Ville d'Orange", "Village de Sirop", "Baratie",
 console.log("----->",real.nom);
 
 function HandleGuess(guess) {
+    if(GetCharacterInfo(guess) === null) { console.log("No character"); return; }
+
     document.getElementById('suggestions-list').style.display = 'none';
     document.getElementById('guess-input').value = '';
 
@@ -80,8 +82,6 @@ function ShowSuggestions(suggestions) {
 
         charImg.classList.add("sugg-img")
 
-        console.log(character, charInfo);
-
         charImg.src = charInfo.imgpath  
         charImg.alt = character; 
         
@@ -131,8 +131,11 @@ document.getElementById('guess-input').addEventListener('keydown', HandleKeyDown
 
 // Écouteur d'événement pour les clics sur la liste des suggestions
 document.getElementById('suggestions-list').addEventListener('click', function(event) {
-    if (event.target && event.target.nodeName === 'DIV') { // Vérifiez si l'élément cliqué est un des éléments de suggestion
+    if(event.target && (event.target.nodeName === 'DIV' || event.target.nodeName === 'SPAN')) {
         document.getElementById('guess-input').value = event.target.textContent;
+        this.style.display = 'none';
+    } else if(event.target && event.target.nodeName === 'IMG') {
+        document.getElementById('guess-input').value = event.target.alt;
         this.style.display = 'none';
     }
 });
@@ -140,8 +143,9 @@ document.getElementById('suggestions-list').addEventListener('click', function(e
 // Click sur soumettre QUE s'il y a 1 seul proposition
 document.getElementById('submit-guess').addEventListener('click', function() {
     if (document.querySelectorAll('.suggestions-list div').length === 1) {
-
         HandleGuess(document.querySelector('.suggestions-list div:last-child').textContent);
+    } else {
+        HandleGuess(document.getElementById('guess-input').value)
     }
 });
 
@@ -260,3 +264,41 @@ function arraysEqual(arr1, arr2) {
     }
     return true;
 }
+
+document.getElementById('settings').addEventListener('click', function() {
+    document.getElementById('settings-popup').style.display = 'block';
+});
+
+document.getElementById('close-popup').addEventListener('click', function() {
+    document.getElementById('settings-popup').style.display = 'none';
+});
+
+// Sélectionnez la popup et le bouton de fermeture
+const popup = document.getElementById('settings-popup');
+const closeButton = document.getElementById('close-popup');
+
+// Ajoutez un écouteur d'événement au bouton de fermeture
+closeButton.addEventListener('click', () => {
+    closePopup();
+});
+
+// Fonction pour fermer la popup
+function closePopup() {
+    popup.style.display = 'none';
+}
+
+// Ajoutez un écouteur d'événement pour fermer la popup en cliquant en dehors d'elle
+window.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+
+// Fonction pour ajuster la position de la barre de suggestions lors du défilement
+function adjustSuggestionsPosition() {
+    const distanceFromTop = window.scrollY;
+    document.getElementById("suggestions-list").style.top = `calc(30% - ${distanceFromTop}px)`;
+}
+
+// Écoutez l'événement de défilement de la page et ajustez la position de la barre de suggestions
+window.addEventListener('scroll', adjustSuggestionsPosition);

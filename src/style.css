@@ -1,3 +1,4 @@
+/* Element de base */
 html, body {
     background: var(--default);
 }
@@ -10,6 +11,22 @@ html, body {
     --empty: #3a3a3c;
 }
 
+.green {
+    color: var(--correct);
+}
+
+.orange {
+    color: var(--semi);
+}
+
+.red {
+    color: var(--wrong);
+}
+
+.light-green {
+    color: #abffce;
+}
+
 
 @keyframes appear {
     0% {
@@ -19,6 +36,8 @@ html, body {
         opacity: 1;
     }
 }
+
+/* Grille de jeu */
 
 #game {
     display: grid;
@@ -90,13 +109,21 @@ html, body {
     text-decoration: underline;
 }
 
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60%; 
+    padding-left: 20%; /* (100% - width) / 2 */
+}
+
 .search-bar {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
 
-    width: 55%;
-    margin-left: 23%;
+    width: 50%;
 }
 
 #guess-input {
@@ -104,7 +131,7 @@ html, body {
     border: 2px solid #ccc;
     border-radius: 8px;
     flex: 1;
-    margin-right: 10px;
+    margin-right: 3%;
     font-size: 16px;
 }
 
@@ -117,7 +144,6 @@ html, body {
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 16px;
-
 }
 
 #submit-guess:hover {
@@ -131,11 +157,13 @@ html, body {
     border-radius: 5px; /* Ajoutez un arrondi aux coins */
     padding: 5px; /* Ajoutez un espace intérieur */
     background-color: #fff; /* Ajoutez une couleur de fond */
-    width: 500px;
+    width: 30%;
     margin-right: 10px; /* Ajustez la marge droite pour correspondre à celle du bouton de soumission */
     position: fixed;
     z-index: 1;
     display: none;
+    margin-top: 5%;
+    top: 30%;
 }
 
 .suggestions-list div {
@@ -191,4 +219,63 @@ header {
 .image {
     width: 120px; /* Ajustez la largeur de l'image selon vos besoins - Meme que box */
     height: auto;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    max-width: 1000px; 
+    height: 60%; /* Hauteur de la popup */
+    max-height: 80vh; /* Hauteur maximale de la popup */
+    overflow-y: auto; /* Activation du défilement vertical si le contenu dépasse */
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    margin-top: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #aaa;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+.prop {
+    font-size: 1.2rem;
 }
