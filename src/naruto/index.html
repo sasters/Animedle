@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narutodle</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+    <header>
+        <button class="buttons" id="settings">⚙️</button>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <button class="buttons">🌍</button>
+    </header>
+    
+    
+
+    <br><br><br>
+
+    <main>
+
+        <div id="settings-popup" class="popup">
+            <div class="popup-content">
+                <!-- Vos cases et autres éléments vont ici -->
+                
+                <div class="section">
+                    <hr>
+                    <h2>Comment jouer ?</h2>
+                    <span>Devine le personnage du jour de "One Piece". Il change tout les 24h.</span><br>
+                    <span>Il suffit de tapper le nom d'un personnage pour révéler ses propriétés.</span><br>
+                    <span>A savoir:</span>
+                    <span>Soumettre avec un seul personnage proposé, soumet le personnage proposé. S'il y en a plusieurs proposé, la soumission n'est pas prise en compte, à moins de spécifier le nom complet ou de cliquer sur le personnage proposé.</span>
+                    <span>Cependant, appuyer sur 'Entrez', soumet le 1er élément proposé.</span> <br><br>
+                    <span class="green">Vert</span> <span>indique que la propriété correspond.</span><br>
+                    <span class="orange">orange</span> <span>indique que la propriété correspond partiellement.</span><br>
+                    <span class="red">Rouge</span> <span>indique que la propriété ne correspond pas du tout.</span><br>
+                    <span>⬆️⬇️</span><span>Les flèches indiquent si la propriété de la réponse est supérieur ou inférieur à l'essai.</span>
+                </div>
+                <div class="section">
+                    <br>
+                    <h2>Propriétés</h2>
+                    <hr>
+                    <span>Voici le détail des propriétés:</span><br>
+                    <span class="prop">Genre</span>:<br> 
+                    <span class="light-green">Valeurs possibles:</span> Homme, Femme ou Autre. <br><br>
+                    <span class="prop">Espèce</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Humain, Homme-Poisson, Sirène, Géant, Cyborg, Klabautermann, Okama, Skypién, Shandia, Zombie, Long Bras, Mink, Tontatta, Homie, Lunarias et Autre. <br> <br>
+                    <span class="prop">Haki</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Roi, Observation, Armement ou Aucun <br> <br>
+                    <span class="prop">Type de fruit</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Zoan, Logia, Paramecia ou Aucun <br><br>
+                    <span class="prop">Arc d'apparition</span>: <br> 
+                    <span>Les flèches apparissent pour cette case pour indiquer si c'est un arc avant (⬇️) ou un arc après (⬆️).</span><br>
+                    <span class="light-green">Valeurs possibles:</span> Romance Dawn, Ville d'Orange, Village de Sirop, Baratie, Arlong Park, Loguetown, Reverse Mountain, Whiskey Peak, Little Garden, Royaume de drum, Alabasta, Jaya, Skypia, Long Ring Long Land, Water 7, Enies Lobby, Thriller Bark, Sabaody, Amazon Lily, Impel Down, Marineford, Ile des Hommes-Poissons, Punk Hazard, Dressrosa, Zoo, Whole Cake Island, Pays de Wa et Egg Head <br><br>
+                    <span class="prop">Appartenance</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Pirate, Marine, Révolutionnaire ou Autre <br><br>
+                    <span class="prop">Grade / Métier</span>: <br>
+                    <span class="light-green">Valeurs possibles:</span> Yonko, Second, Navigateur, Capitaine, Tenancière, Colonnel, Commandant, Epéeiste, Tireur d'élite, Civil, Bateau, Cuisinier, Allié, Shérif, Fermier, Vice Amiral, Médecin, Princesse, Monture, Roi, Officier, Archéologue, Garde Royal, Prisonnier, Esclave, Inspecteur général, Dieu, Guerrier,Explorateur, Charpentier, CP9, CP0, Instructeur, Chef zombie, Zombie spécial, Servant, Designer, Timonier, Directeur, Sous-Commandant, Bandit, Reine, Prince, Shogun, Samourai, Scientifique, Mousquetaire, Gardien, Ninja, Soldat ou Autre
+                </div>
+                <div class="section">
+                    <br>
+                    <h2>Exemple</h2><hr>
+                    <span>Considérons que la bonne réponse est</span> <span class="cyan">Brook</span><br>
+                    <span>Et que tu soumets</span> <span class="cyan">Corazon</span> <span>. Alors cela apparait:</span>
+
+                    <div>
+                        <div class="box appear"><img class="image" alt="Donquixote Rosinante" src="./img/madara.png"></div>
+                        <div class="box correct appear"><span>Homme</span></div>
+                        <div class="box wrong appear"><span>Humain</span></div>
+                        <div class="box correct appear"><span>Paramecia</span></div>
+                        <div class="box lower appear"><span>Dressrosa</span></div>
+                        <div class="box wrong appear"><span>Marine</span></div>
+                        <div class="box wrong appear"><span>Commandant</span></div>
+                        <br>
+                        <span>Genre:</span> <span class="green">Vert</span><br>
+                        <span>C'est une correspondance exacte, ils sont tous les deux de sexe masculin.</span>
+                        <br><br>
+                        <span>Espère:</span> <span class="red">Rouge</span><br>
+                        <span>C'est faux car Brook est autre.</span>
+                        <br><br>
+                        <span>Haki:</span> <span class="green">Vert</span><br>
+                        <span>C'est vrai, aucun d'entre eux n'a le Haki.</span>
+                        <br><br>
+                        <span>Type de fruit:</span> <span class="green">Vert</span><br>
+                        <span>C'est vrai, ils ont tous les deux des Paramecia.</span>
+                        <br><br>
+                        <span>Arc d'apparition:</span> <span class="red">Rouge</span><br>
+                        <span>C'est rouge avec une flèche (⬇️), car Thriller Bark vient avant Dressrosa.</span>
+                        <br><br>
+                        <span>Appartenance:</span> <span class="red">Rouge</span><br>
+                        <span>Car l'un est pirate l'autre marine.</span>
+                        <br><br>
+                        <span>Grade / Métier:</span> <span class="red">Rouge</span><br>
+                        <span>Aucune correspondance.</span>
+                        <div class="box appear"><img class="image" alt="Donquixote Rosinante" src="./img/itachi.png"></div>
+                        <div class="box correct appear"><span>Homme</span></div>
+                        <div class="box correct appear"><span>Autre</span></div>
+                        <div class="box correct appear"><span>Paramecia</span></div>
+                        <div class="box correct appear"><span>Thriller Bark</span></div>
+                        <div class="box correct appear"><span>Pirate</span></div>
+                        <div class="box correct appear"><span>Musicien</span></div>
+                    </div>
+                    <span>GL HF</span>
+
+                </div>
+
+            </div>
+            <span id="close-popup" class="close-button">&times;</span>
+        </div>
+
+        <div class="search-container">
+
+            <div class="search-bar">
+                <img id="hint-button" src="./img/quote.png" alt="Bouton d'indice">
+                <input type="text" id="input-guess" placeholder="Entrez votre proposition...">
+                <button id="submit-guess">Soumettre</button>
+
+                <!-- Structure de la popup d'indice -->
+                <div id="hint-popup" class="hint-popup">
+                    <span id="hint-text"></span>
+
+                    <span class="close-icon" id="close-icon">X</span>
+                </div>
+
+            </div>
+
+            <div id="suggestions-list" class="suggestions-list">
+                <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
+            </div>
+        </div>
+    
+        <div id="game">
+            <div class="grid">
+                <div class="box hidden"><span>Image</span></div>
+                <div class="box hidden"><span>Genre</span></div>
+                <div class="box hidden"><span>Espèce</span></div>
+                <div class="box hidden"><span>Nature de Chakra</span></div>
+                <div class="box hidden"><span>Vivant</span></div>
+                <div class="box hidden"><span>Clan</span></div>
+                <div class="box hidden"><span>Pouvoir héréditaire</span></div>
+                <div class="box hidden"><span>Affiliation</span></div>
+                <div class="box hidden"><span>Arc d'Apparition</span></div>
+               
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h4>Hier: Luffy</h4>
+    </footer>
+
+   
+
+    <script src="char.js" type="module"></script>
+    <script type="module" src="index.js"></script>
+
+</body>
+</html>

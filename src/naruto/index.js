@@ -3,71 +3,96 @@ import { characters } from './char.js';
 var real = characters[Math.floor(Math.random() * characters.length)];
 var attemps = 0;
 var arcOrder = ['Romance Dawn', "Ville d'Orange", "Village de Sirop", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain","Whiskey Peak","Little Garden", "Royaume de drum", "Alabasta", "Jaya","Skypia","Long Ring Long Land", "Water 7", "Enies Lobby","Thriller Bark","Sabaody","Amazon Lily","Impel Down","Marineford","Ile des Hommes-Poissons","Punk Hazard","Dressrosa","Zoo","Whole Cake Island","Pays de Wa","Egg Head"]
+
+var arcNaruto = ["Introduction", "Pays des Vagues", "Examen Chunin", "Invasion de Konoha", "Recherche de Tsunade", "Fuite de Sasuke", "Sauvetage du Kazekage", "Hidan et Kakuzu", "Poursuite d'Itachi", "Invasion de Pain", "Sommet des 5 Kages", "Maitrise de Kyubi", "Quatrième Grande Guerre Ninja", "Combat contre Madara", "Combat contre Kaguya"]
+var arcBoruto = ["Introduction", "Pays des Vagues", "Examen Chunin", "Invasion de Konoha", "Recherche de Tsunade", "Fuite de Sasuke", "Sauvetage du Kazekage", "Hidan et Kakuzu", "Poursuite d'Itachi", "Invasion de Pain", "Sommet des 5 Kages", "Maitrise de Kyubi", "Quatrième Grande Guerre Ninja", "Combat contre Madara", "Combat contre Kaguya", "Début à l'Académie Ninjas", "Ao", "Kawaki"]
+
+var nChar = characters.filter(function(character) {
+    return character.manga.includes('Naruto');
+});
+
+var bChar = characters.filter(function(character) {
+    return character.manga.includes('Boruto');
+});
+
+var useOnlyNaruto = false;
+
 console.log("----->",real.nom);
 
 function HandleGuess(guess) {
     if(GetCharacterInfo(guess) === null) { console.log("No character"); return; }
 
     document.getElementById('suggestions-list').style.display = 'none';
-    document.getElementById('guess-input').value = '';
+    document.getElementById('input-guess').value = '';
 
     attemps++;
 
     AddRow(guess);
 }
 
-function FilterCharacters(text) {
+/* Utilise que les perso de Naruto ou Boruto & Naruto */
+function FilterCharactersByManga(text) {
     text = text.toLowerCase().trim();
     return characters.filter(function(character) {
-        if (character.nom.toLowerCase().startsWith(text)) {
-            return true;
-        }
-
-        for (var i = 0; i < character.alias.length; i++) {
-            if (character.alias[i].toLowerCase().startsWith(text)) {
+        if ((useOnlyNaruto && character.manga.includes('Naruto')) || (!useOnlyNaruto && character.manga.includes('Boruto'))) {
+            if (character.nom.toLowerCase().startsWith(text)) {
                 return true;
+            }
+            for (var i = 0; i < character.alias.length; i++) {
+                if (character.alias[i].toLowerCase().startsWith(text)) {
+                    return true;
+                }
             }
         }
         return false;
     }).map(function(character) {
-        return character.nom; 
+        return character.nom;
     });
 }
 
+/* return info about a character by name in an array, null if not exists */
 function GetCharacterInfo(char) {
-
-    var found = characters.find(function(characters) {
-        return characters.nom.toLowerCase() === char.toLowerCase();
-    });
+    if(useOnlyNaruto) {
+        var found = bChar.find(function(character) {
+            return character.nom.toLowerCase() === char.toLowerCase();
+        });
+    } else {
+        var found = nChar.find(function(character) {
+            return character.nom.toLowerCase() === char.toLowerCase();
+        });
+    }
 
     if(found) {
         return [
             found.imgpath,
             found.genre,
             found.espece,
-            found.haki,
-            found.fruit,
-            found.arc,
-            found.appartenance,
-            found.grade
+            found.nature,
+            found.vivant,
+            found.clan,
+            found.pouvoir,
+            found.affiliation,
+            found.arc
         ]
     }
 
     return null;
 }
 
+
+/* return info about a character by name in a dictionnary, null if not exists */
 function GetCharacter(name) {
-    var index = 0;
     for (let i = 0; i < characters.length; i++) {
         if(characters[i].alias.includes(name)) {
-            break;
+            return characters[i];
         }
-        index++;
     }
-
-    return characters[index];
+    
+    return null; // Retourne null si aucun personnage n'est trouvé
 }
 
+
+/* Affiche les suggestions */
 function ShowSuggestions(suggestions) {
     var sugg = document.querySelector('.suggestions-list');
     sugg.innerHTML = ''; // supprime ancien sugg
@@ -76,7 +101,7 @@ function ShowSuggestions(suggestions) {
     suggestions.forEach(function(character) {
         var charInfo = GetCharacter(character)
 
-        if(!charInfo) console.log(character);
+        if(!charInfo) { console.log("not for:", character, charInfo); }
 
         var newSugg = document.createElement('div');
         var charImg = document.createElement('img'); 
@@ -106,7 +131,8 @@ function HandleInputEvent(event) {
         sugg.innerHTML = '';
         sugg.style.display = 'none';
     } else {
-        var charFiltered = FilterCharacters(guess);
+        var charFiltered = FilterCharactersByManga(guess);
+        console.log(charFiltered);
         ShowSuggestions(charFiltered);
 
         if(document.querySelectorAll('.suggestions-list div').length <= 0) { sugg.style.display = 'none'; }
@@ -128,8 +154,8 @@ function HandleKeyDownEvent(event) {
 }
 
 // Ajouter des gestionnaires d'événements pour les événements "input" et "keydown" dans la barre de recherche
-document.getElementById('guess-input').addEventListener('input', HandleInputEvent);
-document.getElementById('guess-input').addEventListener('keydown', HandleKeyDownEvent);
+document.getElementById('input-guess').addEventListener('input', HandleInputEvent);
+document.getElementById('input-guess').addEventListener('keydown', HandleKeyDownEvent);
 
 // Écouteur d'événement pour les clics sur la liste des suggestions
 document.getElementById('suggestions-list').addEventListener('click', function(event) {
@@ -162,7 +188,7 @@ function AddRow(guess) {
 
     if (guess !== '') {
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 9; i++) {
 
             setTimeout(() => {
                 if(i === 0) {
@@ -185,7 +211,7 @@ function AddRow(guess) {
                     if (Array.isArray(char[i])) { newSpan.textContent = char[i].join(' '); } 
                     else { newSpan.textContent = char[i]; }
 
-                    newCase.classList.add(corr[i-1]);
+                    newCase.classList.add(corr[i]);
 
                     newCase.appendChild(newSpan)
                     grid.appendChild(newCase);
@@ -226,7 +252,6 @@ function GetCorrection(char) {
     
     for(var cate in real) {
         if(cate !== 'nom' && cate !== 'alias' && cate !== 'imgpath') {
-
             if(Array.isArray(real[cate])) {
 
                 if (arraysEqual(char[cate], real[cate])) {
@@ -241,11 +266,20 @@ function GetCorrection(char) {
                 if(cate === 'arc') {
                     if (char[cate] === real[cate]) {
                         corr[index] = 'correct';
-                    } else if (arcOrder.indexOf(char[cate]) < arcOrder.indexOf(real[cate])) {
-                        corr[index] = 'higher';
+                    } else if (useOnlyNaruto) {
+                        if (arcNaruto.indexOf(char[cate]) < arcNaruto.indexOf(real[cate])) {
+                            corr[index] = 'higher';
+                        } else {
+                            corr[index] = 'lower';
+                        }
                     } else {
-                        corr[index] = 'lower';
+                        if (arcBoruto.indexOf(char[cate]) < arcBoruto.indexOf(real[cate])) {
+                            corr[index] = 'higher';
+                        } else {
+                            corr[index] = 'lower';
+                        }
                     }
+                    
                 } else {
                     if(real[cate] == char[cate]) { corr[index] = 'correct'; }
                     else { corr[index] = 'wrong'; }
@@ -335,3 +369,9 @@ window.addEventListener('click', function(event) {
         hintPopup.style.display = 'none';
     }
 });
+
+
+
+// ----------------------------------------------------------------------------
+
+
