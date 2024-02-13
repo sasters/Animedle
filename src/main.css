@@ -1,0 +1,31 @@
+html, body {
+    background: var(--default);
+}
+
+:root {
+    --default: #121213;
+    --wrong: #d30e00;
+    --correct: #2DD618;
+    --semi: #b59f3b;
+    --empty: #3a3a3c;
+}
+
+.green {
+    color: var(--correct);
+}
+
+.orange {
+    color: var(--semi);
+}
+
+.red {
+    color: var(--wrong);
+}
+
+.light-green {
+    color: #abffce;
+}
+
+.cyan {
+    color: #06a7ac;
+}

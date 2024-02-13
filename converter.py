@@ -36,5 +36,5 @@ with open(csv_file, newline='', encoding='utf-8') as file:
 js_code = "export const characters = " + json.dumps(characters, indent=4) + ";"
 
 # Écrire le code JavaScript dans un fichier
-with open('./src/char.js', 'w') as js_file:
+with open('./src/op/char.js', 'w') as js_file:
     js_file.write(js_code)
