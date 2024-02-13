@@ -45,13 +45,14 @@ with open(csv_naruto, newline='', encoding='utf-8') as file:
         clan = row['Clan'].split(',')
         pouvoir = row['Pouvoir héréditaire'].split(',')
         affiliation = row['Affiliation'].split(',')
+        g = row['Genre'].split(',')
 
         # Créer un dictionnaire pour chaque personnage de Naruto
         character = {
             'manga': manga,
             'nom': row['Nom'].strip(),
             'alias': row['Alias'].split(','),
-            'genre': row['Genre'].strip(),
+            'genre': g,
             'espece': row['Espèce'].strip(),
             'nature': nature_chakra,
             'vivant': row['Vivant'].strip(),

@@ -20,7 +20,7 @@ var useOnlyNaruto = false;
 console.log("----->",real.nom);
 
 function HandleGuess(guess) {
-    if(GetCharacterInfo(guess) === null) { console.log("No character"); return; }
+    if(GetCharacterInfo(guess) === null) { console.log("No character:", guess); return; }
 
     document.getElementById('suggestions-list').style.display = 'none';
     document.getElementById('input-guess').value = '';
@@ -53,11 +53,11 @@ function FilterCharactersByManga(text) {
 /* return info about a character by name in an array, null if not exists */
 function GetCharacterInfo(char) {
     if(useOnlyNaruto) {
-        var found = bChar.find(function(character) {
+        var found = nChar.find(function(character) {
             return character.nom.toLowerCase() === char.toLowerCase();
         });
     } else {
-        var found = nChar.find(function(character) {
+        var found = bChar.find(function(character) {
             return character.nom.toLowerCase() === char.toLowerCase();
         });
     }
@@ -173,7 +173,7 @@ document.getElementById('submit-guess').addEventListener('click', function() {
     if (document.querySelectorAll('.suggestions-list div').length === 1) {
         HandleGuess(document.querySelector('.suggestions-list div:last-child').textContent);
     } else {
-        HandleGuess(document.getElementById('guess-input').value)
+        HandleGuess(document.getElementById('input-guess').value)
     }
 });
 
