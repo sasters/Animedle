@@ -18,8 +18,8 @@ var switchValue = urlParams.get('switchValue');
 var useOnlyNaruto = switchValue === 'true';
 var real
 
-if(useOnlyNaruto) { real = nChar[Math.floor(Math.random() * characters.length)]; }
-else { real = bChar[Math.floor(Math.random() * characters.length)]; }
+if(useOnlyNaruto) { real = nChar[Math.floor(Math.random() * nChar.length)]; }
+else { real = bChar[Math.floor(Math.random() * bChar.length)]; }
 
 console.log("----->",real.nom, useOnlyNaruto);
 

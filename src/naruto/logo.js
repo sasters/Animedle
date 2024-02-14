@@ -3,7 +3,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Katon",
         "alias": [
-            "Katon,Feu"
+            "Katon",
+            "Feu"
         ],
         "imgpath": "./img/katon.png"
     },
@@ -11,7 +12,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Suiton",
         "alias": [
-            "Suiton,Eau"
+            "Suiton",
+            "Eau"
         ],
         "imgpath": "./img/suiton.png"
     },
@@ -19,7 +21,10 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Raiton",
         "alias": [
-            "Raiton,Foudre,Eclair,\u00e9clair"
+            "Raiton",
+            "Foudre",
+            "Eclair",
+            "\u00e9clair"
         ],
         "imgpath": "./img/raiton.png"
     },
@@ -27,7 +32,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Doton",
         "alias": [
-            "Doton,Terre"
+            "Doton",
+            "Terre"
         ],
         "imgpath": "./img/doton.png"
     },
@@ -35,7 +41,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Futon",
         "alias": [
-            "Futon,Vent"
+            "Futon",
+            "Vent"
         ],
         "imgpath": "./img/futon.png"
     },
@@ -43,7 +50,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Hyoton",
         "alias": [
-            "Hyoton,Glace"
+            "Hyoton",
+            "Glace"
         ],
         "imgpath": "./img/hyoton.png"
     },
@@ -51,7 +59,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Y\u00f4ton",
         "alias": [
-            "Y\u00f4ton,Lave"
+            "Y\u00f4ton",
+            "Lave"
         ],
         "imgpath": "./img/yotonl.png"
     },
@@ -83,7 +92,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Ranton",
         "alias": [
-            "Ranton,Orage"
+            "Ranton",
+            "Orage"
         ],
         "imgpath": "./img/ranton.png"
     },
@@ -91,7 +101,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Bakuton",
         "alias": [
-            "Bakuton,Explosion"
+            "Bakuton",
+            "Explosion"
         ],
         "imgpath": "./img/bakuton.png"
     },
@@ -99,7 +110,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Jinton",
         "alias": [
-            "Jinton,Poussi\u00e8re,Vide"
+            "Jinton",
+            "Poussi\u00e8re",
+            "Vide"
         ],
         "imgpath": "./img/jinton.png"
     },
@@ -107,7 +120,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mokuton",
         "alias": [
-            "Mokuton,Bois,Arbre"
+            "Mokuton",
+            "Bois",
+            "Arbre"
         ],
         "imgpath": "./img/mokuton.png"
     },
@@ -115,7 +130,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Futton",
         "alias": [
-            "Futton,Vapeau"
+            "Futton",
+            "Vapeau"
         ],
         "imgpath": "./img/futton.png"
     },
@@ -323,7 +339,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Alliance Shinobi",
         "alias": [
-            "Alliance Shinobi,Shinobi"
+            "Alliance Shinobi",
+            "Shinobi"
         ],
         "imgpath": "./img/shinobi.png"
     },
@@ -331,7 +348,8 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Anbu",
         "alias": [
-            "Anbu,Racine"
+            "Anbu",
+            "Racine"
         ],
         "imgpath": "./img/anbu.png"
     },
@@ -347,7 +365,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mont Myoboku",
         "alias": [
-            "Mont,Mont Myoboku,Myoboku"
+            "Mont",
+            "Mont Myoboku",
+            "Myoboku"
         ],
         "imgpath": "./img/mont.png"
     },
@@ -363,7 +383,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Foret de Shikkotsu",
         "alias": [
-            "Foret,Foret de Shikkotsu,Shikkotsu"
+            "Foret",
+            "Foret de Shikkotsu",
+            "Shikkotsu"
         ],
         "imgpath": "./img/foret.png"
     },
@@ -371,7 +393,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Grotte Ryuchi",
         "alias": [
-            "Grotte,Grotte Ryuchi,Ryuchi"
+            "Grotte",
+            "Grotte Ryuchi",
+            "Ryuchi"
         ],
         "imgpath": "./img/grotte.png"
     },
@@ -467,7 +491,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Rinnegan 6",
         "alias": [
-            "6 Rinnegan,Rinnegan de Sasuke,Sasuke"
+            "6 Rinnegan",
+            "Rinnegan de Sasuke",
+            "Sasuke"
         ],
         "imgpath": "./img/srinnegan.png"
     },
@@ -475,7 +501,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Sasuke",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Sasuke"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Sasuke"
         ],
         "imgpath": "./img/mangekyos.png"
     },
@@ -483,7 +511,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Itachi",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Itachi"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Itachi"
         ],
         "imgpath": "./img/mangekyoi.png"
     },
@@ -491,7 +521,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Shisui",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Shisui"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Shisui"
         ],
         "imgpath": "./img/mangekyoss.png"
     },
@@ -499,7 +531,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Madara",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Madara"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Madara"
         ],
         "imgpath": "./img/mangekyom.png"
     },
@@ -507,7 +541,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Indra",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Indra"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Indra"
         ],
         "imgpath": "./img/mangekyoin.png"
     },
@@ -515,7 +551,9 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Izuna",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Izuna"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Izuna"
         ],
         "imgpath": "./img/mangekyoiz.png"
     },
@@ -523,7 +561,10 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Mangekyo Obito",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Obito,Kakashi"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Obito",
+            "Kakashi"
         ],
         "imgpath": "./img/mangekyoo.png"
     },
@@ -531,7 +572,11 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Eternel Sasuke",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Eternal Mangekyo Sharingan,Mangekyo Sharingan Eternel,Sasuke"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Eternal Mangekyo Sharingan",
+            "Mangekyo Sharingan Eternel",
+            "Sasuke"
         ],
         "imgpath": "./img/eternels.png"
     },
@@ -539,7 +584,11 @@ export const logos = [
         "manga": "Naruto,Boruto",
         "nom": "Eternel Madara",
         "alias": [
-            "Mangekyo,Mangekyo Sharingan,Eternal Mangekyo Sharingan,Mangekyo Sharingan Eternel,Madara"
+            "Mangekyo",
+            "Mangekyo Sharingan",
+            "Eternal Mangekyo Sharingan",
+            "Mangekyo Sharingan Eternel",
+            "Madara"
         ],
         "imgpath": "./img/eternelm.png"
     },
@@ -563,7 +612,8 @@ export const logos = [
         "manga": "Boruto",
         "nom": "Dojutsu Isshiki",
         "alias": [
-            "Dojutsu Isshiki,Issiki"
+            "Dojutsu Isshiki",
+            "Issiki"
         ],
         "imgpath": "./img/disshiki.png"
     }

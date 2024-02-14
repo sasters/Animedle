@@ -6,18 +6,44 @@
     <title>Guess the Logo</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="logo.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
     <div class="container">
-        <img id="logo" src="logo.png" alt="Logo">
-        <select id="options">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-        <button onclick="checkAnswer()">Submit</button>
-        <div id="feedback"></div>
+        <img id="logo" src="./img/logo.png" alt="Logo">
+        
+        <br><br><br>
+
+        <div class="search-container">
+
+            <div class="search-bar">
+                <img id="hint-button" src="./img/quote.png" alt="Bouton d'indice">
+                <input type="text" id="input-guess" placeholder="Entrez votre proposition...">
+                <button id="submit-guess">Soumettre</button>
+
+                <!-- Structure de la popup d'indice -->
+                <div id="hint-popup" class="hint-popup">
+                    <span id="hint-text"></span>
+
+                    <span class="close-icon" id="close-icon">X</span>
+                </div>
+
+            </div>
+
+            <div id="suggestions-list" class="suggestions-list">
+                <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
+            </div>
+        </div>
+
+        
+    
     </div>
-    <script src="logo.js"></script>
+
+    <div id="game">
+        <div class="grid"></div>
+    </div>
+
+    <script src="logogame.js" type="module"></script>
+    <script src="logo.js" type="module"></script>
 </body>
 </html>

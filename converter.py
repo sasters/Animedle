@@ -73,7 +73,7 @@ with open(csv_naruto_logo, newline='', encoding='utf-8') as file:
         logo = {
             'manga': row['manga'],
             'nom': row['nom'],
-            'alias': row['alias'].split(', '),
+            'alias': row['alias'].split(','),
             'imgpath': row['imgpath']
         }
         nLogo.append(logo)

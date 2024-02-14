@@ -283,3 +283,13 @@ header {
     transform: translateY(-50%); /* Ajuster la position verticale */
     cursor: pointer; /* Curseur de la souris en forme de main au survol */
 }
+
+.info-yoton {
+    width: 25px;
+    height: 25px;
+}
+
+.info-yotonl {
+    width: 35px;
+    height: 35px;
+}
