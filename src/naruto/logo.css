@@ -1,0 +1,14 @@
+.container {
+    text-align: center;
+}
+
+#logo {
+    width: 200px; /* Ajustez la taille du cadre selon vos besoins */
+    border: 2px solid black; /* Style du cadre */
+    margin-bottom: 20px; /* Espace sous le logo */
+}
+
+#feedback {
+    margin-top: 20px; /* Espace au-dessus du feedback */
+    font-weight: bold; /* Texte en gras */
+}

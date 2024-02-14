@@ -212,7 +212,7 @@ header {
 
 .popup-content {
     position: absolute;
-    top: 50%;
+    top: 410%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -283,4 +283,3 @@ header {
     transform: translateY(-50%); /* Ajuster la position verticale */
     cursor: pointer; /* Curseur de la souris en forme de main au survol */
 }
-

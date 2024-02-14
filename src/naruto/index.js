@@ -1,8 +1,6 @@
 import { characters } from './char.js';
 
-var real = characters[Math.floor(Math.random() * characters.length)];
 var attemps = 0;
-var arcOrder = ['Romance Dawn', "Ville d'Orange", "Village de Sirop", "Baratie", "Arlong Park", "Loguetown", "Reverse Mountain","Whiskey Peak","Little Garden", "Royaume de drum", "Alabasta", "Jaya","Skypia","Long Ring Long Land", "Water 7", "Enies Lobby","Thriller Bark","Sabaody","Amazon Lily","Impel Down","Marineford","Ile des Hommes-Poissons","Punk Hazard","Dressrosa","Zoo","Whole Cake Island","Pays de Wa","Egg Head"]
 
 var arcNaruto = ["Introduction", "Pays des Vagues", "Examen Chunin", "Invasion de Konoha", "Recherche de Tsunade", "Fuite de Sasuke", "Sauvetage du Kazekage", "Hidan et Kakuzu", "Poursuite d'Itachi", "Invasion de Pain", "Sommet des 5 Kages", "Maitrise de Kyubi", "Quatrième Grande Guerre Ninja", "Combat contre Madara", "Combat contre Kaguya"]
 var arcBoruto = ["Introduction", "Pays des Vagues", "Examen Chunin", "Invasion de Konoha", "Recherche de Tsunade", "Fuite de Sasuke", "Sauvetage du Kazekage", "Hidan et Kakuzu", "Poursuite d'Itachi", "Invasion de Pain", "Sommet des 5 Kages", "Maitrise de Kyubi", "Quatrième Grande Guerre Ninja", "Combat contre Madara", "Combat contre Kaguya", "Début à l'Académie Ninjas", "Ao", "Kawaki"]
@@ -15,9 +13,15 @@ var bChar = characters.filter(function(character) {
     return character.manga.includes('Boruto');
 });
 
-var useOnlyNaruto = false;
+var urlParams = new URLSearchParams(window.location.search);
+var switchValue = urlParams.get('switchValue');
+var useOnlyNaruto = switchValue === 'true';
+var real
 
-console.log("----->",real.nom);
+if(useOnlyNaruto) { real = nChar[Math.floor(Math.random() * characters.length)]; }
+else { real = bChar[Math.floor(Math.random() * characters.length)]; }
+
+console.log("----->",real.nom, useOnlyNaruto);
 
 function HandleGuess(guess) {
     if(GetCharacterInfo(guess) === null) { console.log("No character:", guess); return; }
@@ -160,10 +164,10 @@ document.getElementById('input-guess').addEventListener('keydown', HandleKeyDown
 // Écouteur d'événement pour les clics sur la liste des suggestions
 document.getElementById('suggestions-list').addEventListener('click', function(event) {
     if(event.target && (event.target.nodeName === 'DIV' || event.target.nodeName === 'SPAN')) {
-        document.getElementById('guess-input').value = event.target.textContent;
+        document.getElementById('input-guess').value = event.target.textContent;
         this.style.display = 'none';
     } else if(event.target && event.target.nodeName === 'IMG') {
-        document.getElementById('guess-input').value = event.target.alt;
+        document.getElementById('input-guess').value = event.target.alt;
         this.style.display = 'none';
     }
 });
@@ -373,5 +377,4 @@ window.addEventListener('click', function(event) {
 
 
 // ----------------------------------------------------------------------------
-
 

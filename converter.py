@@ -4,10 +4,12 @@ import json
 # Chemin vers le fichier CSV
 csv_op = 'OPdle.csv'
 csv_naruto = 'Narutodle.csv'
+csv_naruto_logo = 'Naruto_logo.csv'
 
 # Liste pour stocker les personnages
 characters = []
 n_characters = []
+nLogo = []
 
 # Lire le fichier CSV et ajouter les personnages à la liste
 with open(csv_op, newline='', encoding='utf-8') as file:
@@ -64,9 +66,22 @@ with open(csv_naruto, newline='', encoding='utf-8') as file:
         }
         n_characters.append(character)
 
+with open(csv_naruto_logo, newline='', encoding='utf-8') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        # Créer un dictionnaire pour chaque logo
+        logo = {
+            'manga': row['manga'],
+            'nom': row['nom'],
+            'alias': row['alias'].split(', '),
+            'imgpath': row['imgpath']
+        }
+        nLogo.append(logo)
+
 # Générer le code JavaScript
 js_code = "export const characters = " + json.dumps(characters, indent=4) + ";"
 naruto_js_code = "export const characters = " + json.dumps(n_characters, indent=4) + ";"
+naruto_logo_js_code = "export const logos = " + json.dumps(nLogo, indent=4) + ";"
 
 # Écrire le code JavaScript dans un fichier
 with open('./src/op/char.js', 'w') as js_file:
@@ -74,3 +89,6 @@ with open('./src/op/char.js', 'w') as js_file:
 
 with open('./src/naruto/char.js', 'w') as naruto_js_file:
     naruto_js_file.write(naruto_js_code)
+
+with open('./src/naruto/logo.js', 'w') as js_file:
+    js_file.write(naruto_logo_js_code)
