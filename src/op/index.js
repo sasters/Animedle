@@ -335,3 +335,5 @@ window.addEventListener('click', function(event) {
         hintPopup.style.display = 'none';
     }
 });
+
+document.getElementById("image-found").src = real.imgpath

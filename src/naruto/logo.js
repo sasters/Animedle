@@ -1,5 +1,13 @@
 export const logos = [
     {
+        "manga": "",
+        "nom": "",
+        "alias": [
+            ""
+        ],
+        "imgpath": ""
+    },
+    {
         "manga": "Naruto,Boruto",
         "nom": "Katon",
         "alias": [
@@ -233,11 +241,11 @@ export const logos = [
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Shiruma",
+        "nom": "Shimura",
         "alias": [
-            "Shiruma"
+            "Shimura"
         ],
-        "imgpath": "./img/shiruma.png"
+        "imgpath": "./img/shimura.png"
     },
     {
         "manga": "Naruto,Boruto",
@@ -489,106 +497,125 @@ export const logos = [
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Rinnegan 6",
+        "nom": "Rinnegan de Sasuke",
         "alias": [
             "6 Rinnegan",
             "Rinnegan de Sasuke",
-            "Sasuke"
+            "Sasuke",
+            "Rinnegan de Sasuke"
         ],
         "imgpath": "./img/srinnegan.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Sasuke",
+        "nom": "Mangekyo Sharingan de Sasuke",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
-            "Sasuke"
+            "Sasuke",
+            "Sharingan",
+            "Mangekyo Sharingan de Sasuke"
         ],
         "imgpath": "./img/mangekyos.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Itachi",
+        "nom": "Mangekyo Sharingan d'Itachi",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
-            "Itachi"
+            "Itachi",
+            "Mangekyo Sharingan d'Itachi",
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyoi.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Shisui",
+        "nom": "Mangekyo Sharingan de Shusui",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
-            "Shisui"
+            "Shisui",
+            "Mangekyo Sharingan de Shusui",
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyoss.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Madara",
+        "nom": "Mangekyo Sharingan de Madara",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
-            "Madara"
+            "Madara",
+            "Mangekyo Sharingan de Madara",
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyom.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Indra",
+        "nom": "Mangekyo Sharingan d'Indra",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
-            "Indra"
+            "Indra",
+            "Sharingan",
+            "Mangekyo Sharingan d'Indra"
         ],
         "imgpath": "./img/mangekyoin.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Izuna",
+        "nom": "Mangekyo Sharingan d'Izuna",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
-            "Izuna"
+            "Izuna",
+            "Mangekyo Sharingan d'Izuna",
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyoiz.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Mangekyo Obito",
+        "nom": "Mangekyo Sharingan d'Obito",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
             "Obito",
-            "Kakashi"
+            "Kakashi",
+            "Mangekyo Sharingan d'Obito",
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyoo.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Eternel Sasuke",
+        "nom": "Mangekyo Sharingan Eternel de Sasuke",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
             "Eternal Mangekyo Sharingan",
             "Mangekyo Sharingan Eternel",
-            "Sasuke"
+            "Sasuke",
+            "Mangekyo Sharingan Eternel de Sasuke",
+            "Sharingan"
         ],
         "imgpath": "./img/eternels.png"
     },
     {
         "manga": "Naruto,Boruto",
-        "nom": "Eternel Madara",
+        "nom": "Mangekyo Sharingan Eternel de Madara",
         "alias": [
             "Mangekyo",
             "Mangekyo Sharingan",
             "Eternal Mangekyo Sharingan",
             "Mangekyo Sharingan Eternel",
-            "Madara"
+            "Madara",
+            "Mangekyo Sharingan Eternel de Madara",
+            "Sharingan"
         ],
         "imgpath": "./img/eternelm.png"
     },
