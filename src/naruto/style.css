@@ -152,30 +152,6 @@
     margin-right: 120px; /* Ajouter une marge à droite pour séparer l'image du texte */
 }
 
-
-header {
-    display: flex;
-    justify-content: center; /* Centrer horizontalement les éléments */
-    align-items: center; /* Centrer verticalement les éléments */
-}
-
-.logo-container {
-    margin: 0 20px; /* Espacement entre le logo et les boutons */
-}
-
-.logo-container img { /* Taille du logo */
-    width: 150px;
-    height: auto; 
-}
-
-.buttons {
-    font-size: 36px; 
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-}
-
 .box.lower {
     background: var(--wrong);
     clip-path: polygon(97% 60%, 85% 60%, 85% 5%, 15% 5%, 15% 60%, 3% 60%, 50% 95%);

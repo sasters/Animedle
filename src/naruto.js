@@ -2,6 +2,7 @@ var switchValue = true; // ou false selon votre cas
 
 var classicPath = 'naruto/index.html?switchValue='
 var logoPath = 'naruto/logo.html?switchValue='
+var blurPath = 'naruto/blur.html?switchValue='
 
 var toggleSwitch = document.getElementById("switch");
     toggleSwitch.addEventListener("change", function() {
@@ -11,4 +12,5 @@ var toggleSwitch = document.getElementById("switch");
 
     document.getElementById('classic').href = classicPath+switchValue;
     document.getElementById('logo').href = logoPath+switchValue;
+    document.getElementById('blur').href = blurPath+switchValue;
 });

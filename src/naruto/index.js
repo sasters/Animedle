@@ -183,6 +183,7 @@ document.getElementById('submit-guess').addEventListener('click', function() {
 
 
 // Gestionnaire d'événements pour le clic sur le bouton de soumission
+var lastElem = null;
 function AddRow(guess) {
     var grid = document.querySelector('.grid');
     var char = GetCharacterInfo(guess)
@@ -205,7 +206,12 @@ function AddRow(guess) {
                     img.src = char[0];
 
                     newCase.appendChild(img)
-                    grid.appendChild(newCase);
+                    
+                    if(lastElem) { grid.insertBefore(newCase, lastElem); }
+                    else { grid.appendChild(newCase); }
+
+                    lastElem = newCase;
+                    
                 } else {
                     var newCase = document.createElement('div');
                     newCase.classList.add("box");
@@ -216,13 +222,13 @@ function AddRow(guess) {
                     else { newSpan.textContent = char[i]; }
 
                     newCase.classList.add(corr[i]);
-
                     newCase.appendChild(newSpan)
-                    grid.appendChild(newCase);
+
+                    if(lastElem) { grid.insertBefore(newCase, lastElem); }
+                    else { grid.appendChild(newCase); }
+
+                    lastElem = newCase;
                 }
-                
-                
-                
 
                 setTimeout(() => {
                     newCase.classList.add('appear');

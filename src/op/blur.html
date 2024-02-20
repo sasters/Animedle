@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPdle</title>
+    <link rel="stylesheet" href="./blur.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../header.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+    <header>
+        <button class="buttons" id="settings">⚙️</button>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <a href="../op.html" class="buttons">↩️</a>
+    </header>
+    
+    <br><br><br>
+
+    <main>
+
+        <div class="search-container">
+
+            <div class="search-bar">
+                <img id="hint-button" src="./img/quote.png" alt="Bouton d'indice">
+                <input type="text" id="guess-input" placeholder="Entrez votre proposition...">
+                <button id="submit-guess">Soumettre</button>
+
+                <!-- Structure de la popup d'indice -->
+                <div id="hint-popup" class="hint-popup">
+                    <span id="hint-text"></span>
+
+                    <span class="close-icon" id="close-icon">X</span>
+                </div>
+
+            </div>
+
+            <div id="suggestions-list" class="suggestions-list">
+                <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
+            </div>
+        </div>
+
+        <div class="img-guess">
+            <img src="./img/luffy.png" alt="luffy" class="blur" id="image-found">
+        </div>
+
+        <div id="game">
+            <div class="grid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <h4>Hier: Luffy</h4>        
+    </footer>
+
+    <script src="char.js" type="module"></script>
+    <script type="module" src="blur.js"></script>
+
+</body>
+</html>

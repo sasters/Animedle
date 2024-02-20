@@ -1,11 +1,11 @@
-import { logos } from "./logo.js";
+import { characters } from "./char.js";
 
-var nLogo = logos.filter(function(logo) {
-    return logo.manga.includes('Naruto');
+var nLogo = characters.filter(function(char) {
+    return char.manga.includes('Naruto');
 });
 
-var bLogo = logos.filter(function(logo) {
-    return logo.manga.includes('Boruto');
+var bLogo = characters.filter(function(char) {
+    return char.manga.includes('Boruto');
 });
 
 var urlParams = new URLSearchParams(window.location.search);
@@ -17,65 +17,51 @@ var attemps = 0;
 if(useOnlyNaruto) { real = nLogo[Math.floor(Math.random() * nLogo.length)]; }
 else { real = bLogo[Math.floor(Math.random() * bLogo.length)]; }
 
-console.log('---->',real);
+console.log("--->",useOnlyNaruto, real);
 
-document.getElementById('logo').src = real.imgpath;
+var image = document.getElementById("image-found");
+image.src = real.imgpath
 
 function HandleGuess(guess) {
-    if(GetLogo(guess) === null) { console.log("No character:", guess); return; }
+    if(GetCharacter(guess) === null) { console.log("No character:", guess); return; }
 
     document.getElementById('suggestions-list').style.display = 'none';
-    document.getElementById('input-guess').value = '';
+    document.getElementById('guess-input').value = '';
 
     attemps++;
+
+    var blur = 30 - attemps*5;
+    if(blur < 10) { blur = 10; }
+    image.style.filter = `blur(${blur}px)`;
 
     AddRow(guess);
 }
 
-/* Utilise que les perso de Naruto ou Boruto & Naruto */
-function FilterCharactersByManga(text) {
-    text = text.toLowerCase().trim();
-    return logos.filter(function(logo) {
-        if ((useOnlyNaruto && logo.manga.includes('Naruto')) || (!useOnlyNaruto && logo.manga.includes('Boruto'))) {
-            if (logo.nom.toLowerCase().startsWith(text)) {
-                return true;
-            }
-            for (var i = 0; i < logo.alias.length; i++) {
-                if (logo.alias[i].toLowerCase().startsWith(text)) {
-                    return true;
-                }
-            }
+function GetCharacter(name) {
+    var index = 0;
+    for (let i = 0; i < characters.length; i++) {
+        if(characters[i].alias.includes(name)) {
+            break;
         }
-        return false;
-    }).map(function(logo) {
-        return logo.nom;
-    });
-}
-
-/* return info about a character by name in a dictionnary, null if not exists */
-function GetLogo(name) {
-    let logos = useOnlyNaruto ? nLogo : bLogo; // Sélectionne la liste appropriée en fonction de useOnlyNaruto
-
-    for (let i = 0; i < logos.length; i++) {
-        if (logos[i].alias.includes(name)) {
-            return logos[i];
-        }
+        index++;
     }
 
-    return null; // Retourne null si aucun personnage n'est trouvé
+    return characters[index];
 }
 
-
-/* Affiche les suggestions */
 function ShowSuggestions(suggestions) {
     var sugg = document.querySelector('.suggestions-list');
     sugg.innerHTML = ''; // supprime ancien sugg
 
     // Affichez les nouvelles suggestions
     suggestions.forEach(function(character) {
+        var charInfo = GetCharacter(character)
+
+        if(!charInfo) console.log(character);
+
         var newSugg = document.createElement('div');
         var newSpan = document.createElement("span");
-        
+
         newSpan.textContent = character;
 
         newSugg.appendChild(newSpan);
@@ -85,6 +71,25 @@ function ShowSuggestions(suggestions) {
 
     sugg.style.display = 'block'; // Afficher la liste de suggestions
 }
+
+function FilterCharacters(text) {
+    text = text.toLowerCase().trim();
+    return characters.filter(function(character) {
+        if (character.nom.toLowerCase().startsWith(text)) {
+            return true;
+        }
+
+        for (var i = 0; i < character.alias.length; i++) {
+            if (character.alias[i].toLowerCase().startsWith(text)) {
+                return true;
+            }
+        }
+        return false;
+    }).map(function(character) {
+        return character.nom; 
+    });
+}
+
 function HandleInputEvent(event) {
     var guess = this.value.trim(); // Récupérer la valeur de la barre de recherche en supprimant les espaces vides au début et à la fin
     var sugg = document.getElementById('suggestions-list');
@@ -93,14 +98,15 @@ function HandleInputEvent(event) {
         sugg.innerHTML = '';
         sugg.style.display = 'none';
     } else {
-        var charFiltered = FilterCharactersByManga(guess);
-        console.log(charFiltered);
+        var charFiltered = FilterCharacters(guess);
         ShowSuggestions(charFiltered);
 
         if(document.querySelectorAll('.suggestions-list div').length <= 0) { sugg.style.display = 'none'; }
         else { sugg.style.display = 'block'; }   
     }
-}function HandleKeyDownEvent(event) {
+}
+
+function HandleKeyDownEvent(event) {
     var sugg = document.getElementById('suggestions-list');
 
     if (event.keyCode === 13 && sugg.style.display !== 'none') { // Enter + sugg existe
@@ -114,16 +120,16 @@ function HandleInputEvent(event) {
 }
 
 // Ajouter des gestionnaires d'événements pour les événements "input" et "keydown" dans la barre de recherche
-document.getElementById('input-guess').addEventListener('input', HandleInputEvent);
-document.getElementById('input-guess').addEventListener('keydown', HandleKeyDownEvent);
+document.getElementById('guess-input').addEventListener('input', HandleInputEvent);
+document.getElementById('guess-input').addEventListener('keydown', HandleKeyDownEvent);
 
 // Écouteur d'événement pour les clics sur la liste des suggestions
 document.getElementById('suggestions-list').addEventListener('click', function(event) {
     if(event.target && (event.target.nodeName === 'DIV' || event.target.nodeName === 'SPAN')) {
-        document.getElementById('input-guess').value = event.target.textContent;
+        document.getElementById('guess-input').value = event.target.textContent;
         this.style.display = 'none';
     } else if(event.target && event.target.nodeName === 'IMG') {
-        document.getElementById('input-guess').value = event.target.alt;
+        document.getElementById('guess-input').value = event.target.alt;
         this.style.display = 'none';
     }
 });
@@ -133,16 +139,14 @@ document.getElementById('submit-guess').addEventListener('click', function() {
     if (document.querySelectorAll('.suggestions-list div').length === 1) {
         HandleGuess(document.querySelector('.suggestions-list div:last-child').textContent);
     } else {
-        HandleGuess(document.getElementById('input-guess').value)
+        HandleGuess(document.getElementById('guess-input').value)
     }
 });
 
-
-// Gestionnaire d'événements pour le clic sur le bouton de soumission
 var lastElem = null;
 function AddRow(guess) {
     var grid = document.querySelector('.grid');
-    var l = GetLogo(guess)
+    var l = GetCharacter(guess)
     const anim_time = 500; // ms
 
     var right = l.nom === real.nom
@@ -174,17 +178,19 @@ function AddRow(guess) {
             lastElem = newCase;
         }, anim_time/2);
 
-        var index = logos.findIndex(function(logo) {
-            return logo.alias.includes(guess);
+        var index = characters.findIndex(function(char) {
+            return char.alias.includes(guess);
         });
         if (index !== -1) {
-            logos.splice(index, 1);
+            characters.splice(index, 1);
         }
 
 
         setTimeout(() => {
-            if(right) { alert(`Vous avez trouvé: ${real.nom} en ${attemps} tentative(s) !`) }
-            else if(attemps === 7) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
+            if(right) { 
+                alert(`Vous avez trouvé: ${real.nom} en ${attemps} tentative(s) !`); 
+                image.style.filter = `blur(0px)`;
+            } else if(attemps === 5) { alert(`Petit aide: ça commence par ${real.nom[0]}.`) }
         }, anim_time);  
     } 
 }

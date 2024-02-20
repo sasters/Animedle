@@ -18,11 +18,6 @@
     margin-bottom: 20px; /* Espace sous le logo */
 }
 
-#feedback {
-    margin-top: 20px; /* Espace au-dessus du feedback */
-    font-weight: bold; /* Texte en gras */
-}
-
 .search-container {
     display: flex;
     flex-direction: column;

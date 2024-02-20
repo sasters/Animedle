@@ -18,12 +18,12 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: repeat(1, auto);
 }
 
 .box {
-    width: 120px;
-    height: 120px;
+    width: 500px;
+    height: 70px;
     margin: 4px;
     border: 2px solid var(--empty);
     color: white;
@@ -32,7 +32,7 @@
     align-items: center; /* Centrer verticalement */
     justify-content: center; /* Centrer horizontalement */
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 28px;
 
     animation: appear 0.5s ease forwards;
     opacity: 0;
@@ -152,6 +152,13 @@
     margin-right: 120px; /* Ajouter une marge à droite pour séparer l'image du texte */
 }
 
+
+
+
+
+
+
+
 .box.lower {
     background: var(--wrong);
     clip-path: polygon(97% 60%, 85% 60%, 85% 5%, 15% 5%, 15% 60%, 3% 60%, 50% 95%);
@@ -230,6 +237,7 @@
     filter: blur(30px);
     width: 300px;
     height: 300px;
+    margin-left: 40%;
 }
 
 #hint-button {

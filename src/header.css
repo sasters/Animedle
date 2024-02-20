@@ -1,0 +1,24 @@
+/* HEADER CSS */
+
+header {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement les éléments */
+    align-items: center; /* Centrer verticalement les éléments */
+}
+
+.logo-container {
+    margin: 0 20px; /* Espacement entre le logo et les boutons */
+}
+
+.logo-container img { /* Taille du logo */
+    width: 150px;
+    height: auto; 
+}
+
+.buttons {
+    font-size: 36px; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}

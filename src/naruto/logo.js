@@ -513,8 +513,7 @@ export const logos = [
             "Mangekyo",
             "Mangekyo Sharingan",
             "Sasuke",
-            "Sharingan",
-            "Mangekyo Sharingan de Sasuke"
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyos.png"
     },
@@ -561,8 +560,7 @@ export const logos = [
             "Mangekyo",
             "Mangekyo Sharingan",
             "Indra",
-            "Sharingan",
-            "Mangekyo Sharingan d'Indra"
+            "Sharingan"
         ],
         "imgpath": "./img/mangekyoin.png"
     },

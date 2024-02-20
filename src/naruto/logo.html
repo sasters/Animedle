@@ -6,38 +6,55 @@
     <title>Guess the Logo</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="logo.css">
+    <link rel="stylesheet" href="../header.css">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
-    <div class="container">
-        <img id="logo" src="./img/logo.png" alt="Logo">
+
+    <header>
+        <button class="buttons" id="settings">⚙️</button>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <a href="../naruto.html" class="buttons">↩️</a>
+    </header>
+
+    <br><br><br>
+
+    <main>
+
+        <div class="container">
+
+            <img src="./img/logo.png" alt="logo" id="logo">
         
-        <br><br><br>
-
-        <div class="search-container">
-
-            <div class="search-bar">
-                <img id="hint-button" src="./img/quote.png" alt="Bouton d'indice">
-                <input type="text" id="input-guess" placeholder="Entrez votre proposition...">
-                <button id="submit-guess">Soumettre</button>
-
-                <!-- Structure de la popup d'indice -->
-                <div id="hint-popup" class="hint-popup">
-                    <span id="hint-text"></span>
-
-                    <span class="close-icon" id="close-icon">X</span>
+            <div class="search-container">
+    
+                <div class="search-bar">
+                    <img id="hint-button" src="./img/quote.png" alt="Bouton d'indice">
+                    <input type="text" id="input-guess" placeholder="Entrez votre proposition...">
+                    <button id="submit-guess">Soumettre</button>
+    
+                    <!-- Structure de la popup d'indice -->
+                    <div id="hint-popup" class="hint-popup">
+                        <span id="hint-text"></span>
+    
+                        <span class="close-icon" id="close-icon">X</span>
+                    </div>
+    
                 </div>
-
+    
+                <div id="suggestions-list" class="suggestions-list">
+                    <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
+                </div>
             </div>
-
-            <div id="suggestions-list" class="suggestions-list">
-                <!-- Les suggestions de personnages seront ajoutées ici dynamiquement -->
-            </div>
+    
+            
+        
         </div>
 
-        
+    </main>
+
     
-    </div>
 
     <div id="game">
         <div class="grid"></div>

@@ -6,24 +6,41 @@
     <title>Narutodle</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
-
-    <label class="switch">
-        <input type="checkbox" id="switch" checked>
-        <span class="slider round"></span>
-    </label>
-    <span id="switch-text">Utilise que les personnages de Naruto.</span>
+    
+    <header>
+        <button class="buttons" id="settings">⚙️</button>
+        <div class="logo-container">
+            <img src="op/img/logo.png" alt="Logo">
+        </div>
+        <a href="index.html" class="buttons">↩️</a>
+    </header>
 
     <br><br>
 
-    <h1>Choissisez Votre Mode De Jeu</h1>
-    <ul>
-        <li><a id="classic" href="naruto/index.html?switchValue=true">Classic Mode</a></li>
-        <li><a id="logo" href="naruto/logo.html?switchValue=true">Guess the Logo Mode</a></li>
-        <!-- Ajoutez d'autres modes de jeu pour One Piece ici -->
-    </ul>
+    <main>
+        
+        <label class="switch">
+            <input type="checkbox" id="switch" checked>
+            <span class="slider round"></span>
+        </label>
+        <span id="switch-text">Utilise que les personnages de Naruto.</span>
+    
+        <br><br>
+    
+        <h1>Choissisez Votre Mode De Jeu</h1>
+        <ul>
+            <li><a id="classic" href="naruto/index.html?switchValue=true">Classic Mode</a></li>
+            <li><a id="logo" href="naruto/logo.html?switchValue=true">Guess the Logo Mode</a></li>
+            <li><a id="blur" href="naruto/blur.html?switchValue=true">Guess the Logo Mode</a></li>
+            <!-- Ajoutez d'autres modes de jeu pour One Piece ici -->
+        </ul>
+
+    </main>
+    
 
     <script src="naruto.js" type="module"></script>
 </body>
